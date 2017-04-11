@@ -36,26 +36,21 @@ class Controller:
         this.width = width
         this.height = height
     def createPlants(this, n):                                 #PLUS IS FOR BUSH, MINUS IS FOR EMPTY
-
         this.m = {}
         this.field = []
         this.finString = ""
-
         for l in range(this.height):
             this.string = []
             for e in range(this.width):
                 this.string.append("-")
             this.field.append(this.string)
-
         for l in range(n):
             this.m[l] = Bush(random.randrange(0,this.width, 1),random.randrange(0,this.height,1))
             this.field[this.m[l].y][this.m[l].x] = "+"
-
         for l in this.field:
             for e in l:
                 this.finString += e + "  "
             this.finString += "\n"
-
         print(this.finString)
 i = Controller(30,30)
 i.createPlants(75)
