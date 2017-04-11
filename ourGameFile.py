@@ -1,4 +1,4 @@
-
+import random
 class Positional:
     def __init__(self,x,y,size):
         self.x = x
@@ -32,12 +32,13 @@ class Horse(Animals):
         self.visionAngle = 120
         self.visionRange = 20
 class Controller:
-    def __init__(this):
+    def __init__(this, width, height):
+        this.width = width
+        this.height = height
+    def createPlants(this, n):                                 #CHANGE THIS ALGORITHM, YOU'D BETTER NOT USE THIS ONE
         this.m = {}
-    def createPlants(this):                                 #CHANGE THIS ALGORITHM, YOU'D BETTER NOT USE THIS ONE
-        for i in range(20):
-            this.m[i] = Bush(i,-1 ** i)
-            print(this.m[i].x, this.m[i].y)
-i = Controller()
-i.createPlants()
+        for l in range(n):
+            this.m[l] = Bush(random.randrange(0,this.width, 1),random.randrange(0,this.height,1))
+i = Controller(30,30)
+i.createPlants(75)
 #githubCoopTestDone
