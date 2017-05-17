@@ -35,7 +35,8 @@ class Controller:
     def __init__(this, width, height):
         this.width = width
         this.height = height
-        this.objList = []
+        this.plantList = [Tree(-1,-1)]
+        this.animalList = []
     def createPlants(this, n, opt = 0):
         tr = 0
         bu = 0
@@ -43,14 +44,34 @@ class Controller:
         for i in range(n):
             plantType = random.randrange(0,2,1)
             if (plantType == 1):
-                this.objList.append(Tree(random.randrange(0,this.width,1),random.randrange(0, this.height, 1)))
+                while True:
+                    this.xCord = random.randrange(0,this.width,1)
+                    this.yCord = random.randrange(0, this.height, 1)
+                    this.m = len(this.plantList)
+                    this.c = 0
+                    for a in this.plantList:
+                        if (this.xCord != a.x)&(this.yCord != a.y):
+                            this.c += 1
+                    if this.m == this.c:
+                        break
+                this.plantList.append(Tree(this.xCord,this.yCord))
                 tr += 1
             else:
-                this.objList.append(Bush(random.randrange(0,this.width,1),random.randrange(0,this.height,1)))
+                while True:
+                    this.xCord = random.randrange(0,this.width,1)
+                    this.yCord = random.randrange(0, this.height, 1)
+                    this.m = len(this.plantList)
+                    this.c = 0
+                    for a in this.plantList:
+                        if (this.xCord != a.x)&(this.yCord != a.y):
+                            this.c += 1
+                    if this.m == this.c:
+                        break
+                this.plantList.append(Bush(this.xCord,this.yCord))
                 bu += 1
         if (this.opt == 'showList'):
-            for i in this.objList:
-                print("X: {0}   Y: {1}   -   {2}".format(i.x,i.y,type(i)))
+            for i in this.plantList:
+                print("xCord: {0}   Y: {1}   -   {2}".format(i.x,i.y,type(i)))
         print("Added {0} trees and {1} bushes".format(tr,bu))
 i = Controller(30,30)
 #Необязательный параметр showList - показать список созданных объектов
