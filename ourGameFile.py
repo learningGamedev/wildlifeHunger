@@ -35,23 +35,23 @@ class Controller:
     def __init__(this, width, height):
         this.width = width
         this.height = height
-    def createPlants(this, n):                                 #PLUS IS FOR BUSH, MINUS IS FOR EMPTY
-        this.m = {}
-        this.field = []
-        this.finString = ""
-        for l in range(this.height):
-            this.string = []
-            for e in range(this.width):
-                this.string.append("-")
-            this.field.append(this.string)
-        for l in range(n):
-            this.m[l] = Bush(random.randrange(0,this.width, 1),random.randrange(0,this.height,1))
-            this.field[this.m[l].y][this.m[l].x] = "+"
-        for l in this.field:
-            for e in l:
-                this.finString += e + "  "
-            this.finString += "\n"
-        print(this.finString)
+        this.objList = []
+    def createPlants(this, n, opt = 0):
+        tr = 0
+        bu = 0
+        this.opt = opt
+        for i in range(n):
+            plantType = random.randrange(0,2,1)
+            if (plantType == 1):
+                this.objList.append(Tree(random.randrange(0,this.width,1),random.randrange(0, this.height, 1)))
+                tr += 1
+            else:
+                this.objList.append(Bush(random.randrange(0,this.width,1),random.randrange(0,this.height,1)))
+                bu += 1
+        if (this.opt == 'showList'):
+            for i in this.objList:
+                print("X: {0}   Y: {1}   -   {2}".format(i.x,i.y,type(i)))
+        print("Added {0} trees and {1} bushes".format(tr,bu))
 i = Controller(30,30)
-i.createPlants(75)
-#githubCoopTestDone
+#Необязательный параметр showList - показать список созданных объектов
+i.createPlants(75, 'showList')
