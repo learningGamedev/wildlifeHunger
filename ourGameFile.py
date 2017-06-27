@@ -77,4 +77,5 @@ class Controller:
         print("Added {0} trees and {1} bushes".format(tr,bu))
 i = Controller(30,30)
 #Необязательный параметр showList - показать список созданных объектов
-i.createPlants(30, 'showList')
+i.createPlants(30, 'showList')      #При попытке добавления 30 или меньше растений код выполняется исправно,
+                                    #  иначе - бесконечное выполнение
