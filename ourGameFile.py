@@ -70,10 +70,11 @@ class Controller:
                         this.spawnMatch = False
                 this.plantList.append(Bush(this.xCord,this.yCord))
                 bu += 1
+        this.plantList.__delitem__(0)
         if (this.opt == 'showList'):
             for i in this.plantList:
-                print("xCord: {0}   Y: {1}   -   {2}".format(i.x,i.y,i.__name__))
+                print("xCord: {0}   Y: {1}   -   {2}".format(i.x,i.y,i.__class__.__name__))
         print("Added {0} trees and {1} bushes".format(tr,bu))
 i = Controller(30,30)
 #Необязательный параметр showList - показать список созданных объектов
-i.createPlants(75, 'showList')
+i.createPlants(30, 'showList')
