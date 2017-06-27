@@ -78,4 +78,4 @@ class Controller:
         print("Added {0} trees and {1} bushes".format(tr,bu))
 i = Controller(45,45)
 #Необязательный параметр showList - показать список созданных объектов
-i.createPlants(75, 'showList')
+i.createPlants(76, 'showList')
